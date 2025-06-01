@@ -10,12 +10,30 @@ import {
 import { Textarea } from "../ui/textarea";
 import { Button } from "../ui/button";
 import { useForm, Controller } from "react-hook-form";
+import { z } from "zod";
+import { zodResolver } from "@hookform/resolvers/zod";
 
-type FormData = {
-  preferredSalary: number;
-  salaryPeriod: string;
-  coverLetter?: string;
-};
+// Zod validation schema
+const jobApplySchema = z.object({
+  preferredSalary: z
+    .number({
+      required_error: "Salary expectation is required",
+      invalid_type_error: "Salary must be a number",
+    })
+    .min(1, "Salary must be greater than 0")
+    .max(1000000000, "Salary must be reasonable"),
+  salaryPeriod: z
+    .string({
+      required_error: "Please select a salary period",
+    })
+    .min(1, "Please select a salary period"),
+  coverLetter: z
+    .string()
+    .max(1000, "Cover letter must be less than 1000 characters")
+    .optional(),
+});
+
+type FormData = z.infer<typeof jobApplySchema>;
 
 interface JobApplyFormProps {
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
@@ -42,6 +60,7 @@ export default function JobApplyForm({
       salaryPeriod: "",
       coverLetter: "",
     },
+    resolver: zodResolver(jobApplySchema),
   });
 
   const onSubmit = (data: FormData) => {
@@ -75,11 +94,6 @@ export default function JobApplyForm({
                 type="number"
                 placeholder="e.g. 120000"
                 {...register("preferredSalary", {
-                  required: "Salary expectation is required",
-                  min: {
-                    value: 1,
-                    message: "Salary must be greater than 0",
-                  },
                   valueAsNumber: true,
                 })}
               />
@@ -94,7 +108,6 @@ export default function JobApplyForm({
               <Controller
                 name="salaryPeriod"
                 control={control}
-                rules={{ required: "Please select a salary period" }}
                 render={({ field }) => (
                   <Select
                     onValueChange={field.onChange}
@@ -133,12 +146,7 @@ export default function JobApplyForm({
               id="coverLetter"
               placeholder="Tell us why you're the perfect fit for this role..."
               rows={4}
-              {...register("coverLetter", {
-                maxLength: {
-                  value: 1000,
-                  message: "Cover letter must be less than 1000 characters",
-                },
-              })}
+              {...register("coverLetter")}
             />
             {errors.coverLetter && (
               <p className="text-sm text-red-500">
