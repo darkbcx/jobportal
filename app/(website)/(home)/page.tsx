@@ -1,13 +1,16 @@
 "use client";
 
 import JobSearch from "@/components/job-search";
-import { useRouter } from "next/navigation";
+import JobDetailSheet from "@/components/sheets/job-detail-sheet";
+import { useState } from "react";
 
 export default function HomePage() {
-  const router = useRouter();
+  const [detailSheetOpen, setDetailSheetOpen] = useState(false);
+  const [jobId, setJobId] = useState<string | null>(null);
 
-  const viewDetails = (id: number) => {
-    router.push(`/job/${id}`);
+  const viewDetails = (id: string) => {
+    setJobId(id);
+    setDetailSheetOpen(true);
   };
   return (
     <div className="flex flex-col">
@@ -19,6 +22,11 @@ export default function HomePage() {
           <JobSearch viewDetails={viewDetails} />
         </div>
       </div>
+      <JobDetailSheet
+        jobId={jobId ?? ""}
+        open={detailSheetOpen}
+        onOpenChange={setDetailSheetOpen}
+      />
     </div>
   );
 }

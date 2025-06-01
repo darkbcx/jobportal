@@ -24,7 +24,7 @@ import {
 import { useState } from "react";
 
 type JobSearchProps = {
-  viewDetails: (id: number) => void;
+  viewDetails: (id: string) => void;
 };
 
 export default function JobSearch({ viewDetails }: JobSearchProps) {
@@ -342,7 +342,7 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
                     </div>
                     <div className="flex gap-2 justify-end">
                       <Button>Apply</Button>
-                      <Button variant="outline" onClick={() => viewDetails(job.id)}>View Details</Button>
+                      <Button variant="outline" onClick={() => viewDetails(job.id.toString())}>View Details</Button>
                     </div>
                   </div>
                 </div>
