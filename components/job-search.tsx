@@ -341,7 +341,6 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
                       {job.period}
                     </div>
                     <div className="flex gap-2 justify-end">
-                      <Button>Apply</Button>
                       <Button variant="outline" onClick={() => viewDetails(job.id.toString())}>View Details</Button>
                     </div>
                   </div>

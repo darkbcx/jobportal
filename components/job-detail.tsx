@@ -193,10 +193,6 @@ export default function JobDetails({ mockJobDetails }: JobDetailsProps) {
                   "Apply Now"
                 )}
               </Button>
-              <Button variant="outline" size="lg">
-                <Building className="w-4 h-4 mr-2" />
-                View Company Details
-              </Button>
             </div>
           )}
         </Card>
@@ -234,7 +230,7 @@ export default function JobDetails({ mockJobDetails }: JobDetailsProps) {
 
         {/* Main Content */}
         <Card>
-          <CardContent className="p-6">
+          <CardContent className="px-6">
             <Accordion
               type="multiple"
               defaultValue={["description"]}

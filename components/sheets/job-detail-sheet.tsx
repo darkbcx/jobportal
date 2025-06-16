@@ -94,7 +94,7 @@ export default function JobDetailSheet({
   }, [jobId]);
 
   return (
-    <Sheet open={open} onOpenChange={onOpenChange}>
+    <Sheet open={open} onOpenChange={onOpenChange} >
       <SheetContent className="!max-w-none w-full lg:w-[800px]">
         <SheetHeader>
           <SheetTitle>

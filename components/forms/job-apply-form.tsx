@@ -57,7 +57,7 @@ export default function JobApplyForm({
   } = useForm<FormData>({
     defaultValues: {
       preferredSalary: 0,
-      salaryPeriod: "",
+      salaryPeriod: "monthly",
       coverLetter: "",
     },
     resolver: zodResolver(jobApplySchema),
@@ -97,6 +97,10 @@ export default function JobApplyForm({
                   valueAsNumber: true,
                 })}
               />
+              <p className="text-sm text-muted-foreground">
+                Company range: {formatSalary(mockJobDetails.salary)}
+              </p>
+
               {errors.preferredSalary && (
                 <p className="text-sm text-red-500">
                   {errors.preferredSalary.message}
@@ -109,19 +113,21 @@ export default function JobApplyForm({
                 name="salaryPeriod"
                 control={control}
                 render={({ field }) => (
-                  <Select
-                    onValueChange={field.onChange}
-                    defaultValue={field.value}
-                  >
-                    <SelectTrigger>
-                      <SelectValue />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="annually">Annually</SelectItem>
-                      <SelectItem value="monthly">Monthly</SelectItem>
-                      <SelectItem value="hourly">Hourly</SelectItem>
-                    </SelectContent>
-                  </Select>
+                  <div className="w-full">
+                    <Select
+                      onValueChange={field.onChange}
+                      defaultValue={field.value}
+                    >
+                      <SelectTrigger className="w-full">
+                        <SelectValue />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="annually">Annually</SelectItem>
+                        <SelectItem value="monthly">Monthly</SelectItem>
+                        <SelectItem value="hourly">Hourly</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
                 )}
               />
               {errors.salaryPeriod && (
@@ -131,9 +137,6 @@ export default function JobApplyForm({
               )}
             </div>
           </div>
-          <p className="text-sm text-muted-foreground">
-            Company range: {formatSalary(mockJobDetails.salary)}
-          </p>
         </div>
 
         {/* Cover Letter */}
