@@ -15,7 +15,6 @@ import {
   CardTitle,
 } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
@@ -25,7 +24,6 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Checkbox } from "@/components/ui/checkbox";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
 import { Progress } from "@/components/ui/progress";
@@ -52,7 +50,7 @@ import {
   Plus,
   Phone,
   Briefcase,
-  DollarSign,
+  Home,
 } from "lucide-react";
 
 // Complete validation schema
@@ -154,43 +152,13 @@ const companyTypes = [
   "Other",
 ];
 
-const hiringCategories = [
-  "Software Development",
-  "Design & UX",
-  "Marketing",
-  "Sales",
-  "Operations",
-  "Finance",
-  "Human Resources",
-  "Customer Support",
-  "Data & Analytics",
-  "Product Management",
-  "Engineering",
-  "Legal",
-];
-
-const commonBenefits = [
-  "Health Insurance",
-  "Dental Insurance",
-  "Vision Insurance",
-  "401(k) Matching",
-  "Flexible PTO",
-  "Remote Work",
-  "Professional Development",
-  "Gym Membership",
-  "Free Meals",
-  "Stock Options",
-  "Parental Leave",
-  "Mental Health Support",
-];
-
 export default function RegisterEmployerPage() {
   const router = useRouter();
   const [currentStep, setCurrentStep] = useState(1);
   const [locationInput, setLocationInput] = useState("");
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const totalSteps = 4;
+  const totalSteps = 3;
   const progressPercentage = (currentStep / totalSteps) * 100;
 
   const form = useForm<EmployerRegistrationFormData>({
@@ -212,11 +180,6 @@ export default function RegisterEmployerPage() {
       contactPhone: "",
       headquarters: "",
       officeLocations: [],
-      hiringFor: [],
-      urgentHiring: false,
-      budgetRange: "",
-      remotePolicy: "",
-      benefits: [],
       companyLogo: null,
       verificationDocument: null,
       acceptTerms: false,
@@ -226,8 +189,6 @@ export default function RegisterEmployerPage() {
   });
 
   const watchedOfficeLocations = form.watch("officeLocations");
-  const watchedHiringFor = form.watch("hiringFor");
-  const watchedBenefits = form.watch("benefits");
 
   const addOfficeLocation = (location: string) => {
     if (location && !watchedOfficeLocations.includes(location)) {
@@ -243,30 +204,6 @@ export default function RegisterEmployerPage() {
       "officeLocations",
       currentLocations.filter((location) => location !== locationToRemove)
     );
-  };
-
-  const toggleHiringCategory = (category: string) => {
-    const currentCategories = form.getValues("hiringFor");
-    if (currentCategories.includes(category)) {
-      form.setValue(
-        "hiringFor",
-        currentCategories.filter((c) => c !== category)
-      );
-    } else {
-      form.setValue("hiringFor", [...currentCategories, category]);
-    }
-  };
-
-  const toggleBenefit = (benefit: string) => {
-    const currentBenefits = form.getValues("benefits");
-    if (currentBenefits.includes(benefit)) {
-      form.setValue(
-        "benefits",
-        currentBenefits.filter((b) => b !== benefit)
-      );
-    } else {
-      form.setValue("benefits", [...currentBenefits, benefit]);
-    }
   };
 
   const validateCurrentStep = async (): Promise<boolean> => {
@@ -293,15 +230,13 @@ export default function RegisterEmployerPage() {
         ];
         break;
       case 3:
-        fieldsToValidate = ["hiringFor", "remotePolicy"];
-        break;
-      case 4:
         fieldsToValidate = ["verificationDocument", "acceptTerms"];
         break;
     }
 
     const result = await form.trigger(fieldsToValidate);
     return result;
+    // return true;
   };
 
   const handleNext = async () => {
@@ -313,6 +248,10 @@ export default function RegisterEmployerPage() {
 
   const handlePrevious = () => {
     setCurrentStep((prev) => Math.max(prev - 1, 1));
+  };
+
+  const handleBack = () => {
+    router.replace("/");
   };
 
   const onSubmit = async (data: EmployerRegistrationFormData) => {
@@ -337,13 +276,20 @@ export default function RegisterEmployerPage() {
   return (
     <div className="w-full min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="max-w-3xl mx-auto">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
-            Create Your Employer Account
-          </h1>
-          <p className="mt-2 text-lg text-gray-600">
-            Find the best talent for your company
-          </p>
+        <div className="mb-8 flex">
+          <div>
+            <Button variant="ghost" onClick={handleBack} className="p-0">
+              <Home className="w-6 h-6" />
+            </Button>
+          </div>
+          <div className="flex flex-col items-center justify-center flex-1">
+            <h1 className="text-center text-3xl font-bold text-gray-900">
+              Create Your Employer Account
+            </h1>
+            <p className="mt-2 text-lg text-gray-600">
+              Find the best talent for your company
+            </p>
+          </div>
         </div>
 
         <div className="mb-8">
@@ -389,13 +335,6 @@ export default function RegisterEmployerPage() {
                 currentStep >= 3 ? "text-primary font-medium" : "text-gray-500"
               }
             >
-              Hiring
-            </span>
-            <span
-              className={
-                currentStep >= 4 ? "text-primary font-medium" : "text-gray-500"
-              }
-            >
               Verification
             </span>
           </div>
@@ -406,16 +345,14 @@ export default function RegisterEmployerPage() {
             <CardTitle>
               {currentStep === 1 && "Company Information"}
               {currentStep === 2 && "Contact Details & Location"}
-              {currentStep === 3 && "Hiring Preferences"}
-              {currentStep === 4 && "Verification & Finish"}
+              {currentStep === 3 && "Verification & Finish"}
             </CardTitle>
             <CardDescription>
               {currentStep === 1 &&
                 "Tell us about your company and create your account"}
               {currentStep === 2 &&
                 "Provide contact information and office locations"}
-              {currentStep === 3 && "What roles are you looking to fill?"}
-              {currentStep === 4 &&
+              {currentStep === 3 &&
                 "Verify your company and complete registration"}
             </CardDescription>
           </CardHeader>
@@ -526,7 +463,7 @@ export default function RegisterEmployerPage() {
                                 defaultValue={field.value}
                               >
                                 <FormControl>
-                                  <SelectTrigger>
+                                  <SelectTrigger className="w-full">
                                     <SelectValue placeholder="Select company size" />
                                   </SelectTrigger>
                                 </FormControl>
@@ -554,7 +491,7 @@ export default function RegisterEmployerPage() {
                                 defaultValue={field.value}
                               >
                                 <FormControl>
-                                  <SelectTrigger>
+                                  <SelectTrigger className="w-full">
                                     <SelectValue placeholder="Select industry" />
                                   </SelectTrigger>
                                 </FormControl>
@@ -620,7 +557,7 @@ export default function RegisterEmployerPage() {
                               defaultValue={field.value}
                             >
                               <FormControl>
-                                <SelectTrigger>
+                                <SelectTrigger className="w-full">
                                   <SelectValue placeholder="Select company type" />
                                 </SelectTrigger>
                               </FormControl>
@@ -821,213 +758,8 @@ export default function RegisterEmployerPage() {
                   </div>
                 )}
 
-                {/* Step 3: Hiring Preferences */}
+                {/* Step 3: Verification & Finish */}
                 {currentStep === 3 && (
-                  <div className="space-y-6">
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium">
-                        What are you hiring for?
-                      </h3>
-
-                      <FormField
-                        control={form.control}
-                        name="hiringFor"
-                        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Select hiring categories</FormLabel>
-                            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
-                              {hiringCategories.map((category) => (
-                                <Badge
-                                  key={category}
-                                  variant={
-                                    watchedHiringFor.includes(category)
-                                      ? "default"
-                                      : "outline"
-                                  }
-                                  className="cursor-pointer justify-center py-2"
-                                  onClick={() => toggleHiringCategory(category)}
-                                >
-                                  {category}
-                                </Badge>
-                              ))}
-                            </div>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="urgentHiring"
-                        render={({ field }) => (
-                          <FormItem className="flex flex-row items-start space-x-3 space-y-0">
-                            <FormControl>
-                              <Checkbox
-                                checked={field.value}
-                                onCheckedChange={field.onChange}
-                              />
-                            </FormControl>
-                            <div className="space-y-1 leading-none">
-                              <FormLabel className="text-sm font-normal">
-                                We have urgent hiring needs (positions need to
-                                be filled within 30 days)
-                              </FormLabel>
-                            </div>
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-
-                    <Separator />
-
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium">Work Environment</h3>
-
-                      <FormField
-                        control={form.control}
-                        name="remotePolicy"
-                        render={({ field }) => (
-                          <FormItem className="space-y-3">
-                            <FormLabel>Remote Work Policy</FormLabel>
-                            <FormControl>
-                              <RadioGroup
-                                onValueChange={field.onChange}
-                                defaultValue={field.value}
-                                className="flex flex-col space-y-1"
-                              >
-                                <div className="flex items-center space-x-2">
-                                  <RadioGroupItem
-                                    value="fully-remote"
-                                    id="fully-remote"
-                                  />
-                                  <Label
-                                    htmlFor="fully-remote"
-                                    className="font-normal"
-                                  >
-                                    Fully Remote - All positions are remote
-                                  </Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                  <RadioGroupItem value="hybrid" id="hybrid" />
-                                  <Label
-                                    htmlFor="hybrid"
-                                    className="font-normal"
-                                  >
-                                    Hybrid - Mix of remote and office work
-                                  </Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                  <RadioGroupItem value="onsite" id="onsite" />
-                                  <Label
-                                    htmlFor="onsite"
-                                    className="font-normal"
-                                  >
-                                    On-site - All positions require office
-                                    presence
-                                  </Label>
-                                </div>
-                                <div className="flex items-center space-x-2">
-                                  <RadioGroupItem
-                                    value="flexible"
-                                    id="flexible"
-                                  />
-                                  <Label
-                                    htmlFor="flexible"
-                                    className="font-normal"
-                                  >
-                                    Flexible - Varies by position
-                                  </Label>
-                                </div>
-                              </RadioGroup>
-                            </FormControl>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-
-                      <FormField
-                        control={form.control}
-                        name="budgetRange"
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel className="flex items-center gap-2">
-                              <DollarSign className="w-4 h-4" /> Typical Budget
-                              Range (Optional)
-                            </FormLabel>
-                            <Select
-                              onValueChange={field.onChange}
-                              defaultValue={field.value}
-                            >
-                              <FormControl>
-                                <SelectTrigger>
-                                  <SelectValue placeholder="Select budget range" />
-                                </SelectTrigger>
-                              </FormControl>
-                              <SelectContent>
-                                <SelectItem value="under-50k">
-                                  Under $50,000
-                                </SelectItem>
-                                <SelectItem value="50k-75k">
-                                  $50,000 - $75,000
-                                </SelectItem>
-                                <SelectItem value="75k-100k">
-                                  $75,000 - $100,000
-                                </SelectItem>
-                                <SelectItem value="100k-150k">
-                                  $100,000 - $150,000
-                                </SelectItem>
-                                <SelectItem value="150k-200k">
-                                  $150,000 - $200,000
-                                </SelectItem>
-                                <SelectItem value="200k-plus">
-                                  $200,000+
-                                </SelectItem>
-                              </SelectContent>
-                            </Select>
-                            <FormMessage />
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-
-                    <Separator />
-
-                    <div className="space-y-4">
-                      <h3 className="text-lg font-medium">Company Benefits</h3>
-
-                      <FormField
-                        control={form.control}
-                        name="benefits"
-                        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-                        render={({ field }) => (
-                          <FormItem>
-                            <FormLabel>Select benefits you offer</FormLabel>
-                            <div className="grid grid-cols-2 md:grid-cols-3 gap-2 mt-2">
-                              {commonBenefits.map((benefit) => (
-                                <Badge
-                                  key={benefit}
-                                  variant={
-                                    watchedBenefits.includes(benefit)
-                                      ? "default"
-                                      : "outline"
-                                  }
-                                  className="cursor-pointer justify-center py-2"
-                                  onClick={() => toggleBenefit(benefit)}
-                                >
-                                  {benefit}
-                                </Badge>
-                              ))}
-                            </div>
-                          </FormItem>
-                        )}
-                      />
-                    </div>
-                  </div>
-                )}
-
-                {/* Step 4: Verification & Finish */}
-                {currentStep === 4 && (
                   <div className="space-y-6">
                     <div className="space-y-4">
                       <h3 className="text-lg font-medium">
