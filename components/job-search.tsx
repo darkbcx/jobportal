@@ -11,17 +11,11 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
-import { Badge } from "@/components/ui/badge";
 import { Separator } from "@/components/ui/separator";
-import {
-  ChevronLeft,
-  ChevronRight,
-  MapPin,
-  Clock,
-  Building2,
-  DollarSign,
-} from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { JobPosting } from "@/lib/types";
+import { listJobPostings } from "@/actions/jobposting";
+import JobListItem from "./job-list-item";
 
 type JobSearchProps = {
   viewDetails: (id: string) => void;
@@ -29,68 +23,21 @@ type JobSearchProps = {
 
 export default function JobSearch({ viewDetails }: JobSearchProps) {
   const [remoteOnly, setRemoteOnly] = useState(true);
+  const [jobs, setJobs] = useState<JobPosting[]>([]);
 
-  const jobListings = [
-    {
-      id: 1,
-      title: "Front-End Developer",
-      company: "Oliv",
-      location: "Remote",
-      type: "Full-time",
-      salary: "5 000 - 10 000",
-      period: "/monthly",
-      tags: ["Ethereum", "Web Design", "JavaScript", "Solidity"],
-      
-    },
-    {
-      id: 2,
-      title: "Web3 Developer",
-      company: "Axoni",
-      location: "San Francisco",
-      type: "Full-time",
-      salary: "9 000 - 16 000",
-      period: "/monthly",
-      tags: ["Solidity", "JavaScript", "GraphQL", "Frontend Development"],
-      
-    },
-    {
-      id: 3,
-      title: "ReactJS Developer",
-      company: "The Nano Foundation",
-      location: "New York",
-      type: "Full-time",
-      salary: "35 000 - 48 000",
-      period: "/annually",
-      tags: ["JavaScript", "ReactJS"],
-      
-    },
-    {
-      id: 4,
-      title: "ReactJS Developer",
-      company: "The Nano Foundation",
-      location: "New York",
-      type: "Full-time",
-      salary: "35 000 - 48 000",
-      period: "/annually",
-      tags: ["JavaScript", "ReactJS"],
-      
-    },
-    {
-      id: 5,
-      title: "Front-End Developer",
-      company: "Q Labs",
-      location: "Spain",
-      type: "Part-time",
-      salary: "35 000 - 48 000",
-      period: "/annually",
-      tags: ["Frontend Development"],
-      
-    },
-  ];
+  // TODO : use tanstack query to fetch jobs with useInfiniteQuery
+
+  useEffect(() => {
+    const fetchJobs = async () => {
+      const jobs = await listJobPostings({});
+      setJobs((value) => [...value, ...jobs]);
+    };
+    fetchJobs();
+  }, []);
 
   return (
     <div className="min-h-screen">
-      <div className="mx-auto max-w-7xl space-y-6">
+      <div className="mx-auto container space-y-6">
         {/* Main Filter Section */}
         <Card>
           <CardHeader>
@@ -107,7 +54,7 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
                   (e.g. Keywords, Position...)
                 </p>
                 <Select defaultValue="product-designer">
-                  <SelectTrigger id="job-title">
+                  <SelectTrigger className="w-full" id="job-title">
                     <SelectValue placeholder="Select job title" />
                   </SelectTrigger>
                   <SelectContent>
@@ -135,7 +82,7 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
                   (City, Country...)
                 </p>
                 <Select defaultValue="poland-warszawa">
-                  <SelectTrigger id="location">
+                  <SelectTrigger className="w-full" id="location">
                     <SelectValue placeholder="Select location" />
                   </SelectTrigger>
                   <SelectContent>
@@ -157,7 +104,7 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
                 </Label>
                 <p className="text-xs text-muted-foreground">(min-max)</p>
                 <Select defaultValue="8000-10000">
-                  <SelectTrigger id="budget">
+                  <SelectTrigger className="w-full" id="budget">
                     <SelectValue placeholder="Select budget range" />
                   </SelectTrigger>
                   <SelectContent>
@@ -178,7 +125,7 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
                   (Junior, Regular, Senior)
                 </p>
                 <Select defaultValue="senior">
-                  <SelectTrigger id="level">
+                  <SelectTrigger className="w-full" id="level">
                     <SelectValue placeholder="Select level" />
                   </SelectTrigger>
                   <SelectContent>
@@ -198,7 +145,7 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
                   (Long/short term...)
                 </p>
                 <Select defaultValue="long-term">
-                  <SelectTrigger id="project-type">
+                  <SelectTrigger className="w-full" id="project-type">
                     <SelectValue placeholder="Select type" />
                   </SelectTrigger>
                   <SelectContent>
@@ -220,7 +167,7 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
                   COMPANY SIZE
                 </Label>
                 <Select defaultValue="small-5-10">
-                  <SelectTrigger id="company-size">
+                  <SelectTrigger className="w-full" id="company-size">
                     <SelectValue placeholder="Select size" />
                   </SelectTrigger>
                   <SelectContent>
@@ -240,7 +187,7 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
                   AVAILABILITY
                 </Label>
                 <Select defaultValue="full-time">
-                  <SelectTrigger id="availability">
+                  <SelectTrigger className="w-full" id="availability">
                     <SelectValue placeholder="Select availability" />
                   </SelectTrigger>
                   <SelectContent>
@@ -270,9 +217,6 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
 
         {/* Results Header */}
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-          <p className="text-muted-foreground">
-            We found 25 jobs available for you:
-          </p>
           <div className="flex items-center space-x-2">
             <Label htmlFor="sort-by" className="text-sm text-muted-foreground">
               Sort by:
@@ -296,89 +240,10 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
 
         {/* Job Listings */}
         <div className="space-y-4">
-          {jobListings.map((job) => (
-            <Card
-              key={job.id}
-              className="hover:shadow-md transition-shadow"
-            >
-              <CardContent className="p-6">
-                <div className="flex flex-col md:flex-row justify-between items-end md:items-start gap-4">
-                  <div className="flex-1 space-y-3">
-                    <h3 className="text-xl font-semibold">{job.title}</h3>
-
-                    <div className="flex flex-wrap items-center gap-4 text-sm text-muted-foreground">
-                      <div className="flex items-center space-x-2">
-                        <Building2 className="h-4 w-4" />
-                        <span>{job.company}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <MapPin className="h-4 w-4" />
-                        <span>{job.location}</span>
-                      </div>
-                      <div className="flex items-center space-x-2">
-                        <Clock className="h-4 w-4" />
-                        <span>{job.type}</span>
-                      </div>
-                    </div>
-
-                    <div className="flex flex-wrap gap-2">
-                      {job.tags.map((tag, index) => (
-                        <Badge key={index} variant="secondary">
-                          {tag}
-                        </Badge>
-                      ))}
-                    </div>
-                  </div>
-
-                  <div className="text-right space-y-3">
-                    <div className="flex items-center justify-end space-x-1">
-                      <DollarSign className="h-4 w-4 text-muted-foreground" />
-                      <span className="text-xl font-semibold">
-                        {job.salary}
-                      </span>
-                    </div>
-                    <div className="text-sm text-muted-foreground">
-                      {job.period}
-                    </div>
-                    <div className="flex gap-2 justify-end">
-                      <Button variant="outline" onClick={() => viewDetails(job.id.toString())}>View Details</Button>
-                    </div>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          {jobs.map((job) => (
+            <JobListItem key={job.id} job={job} viewDetails={viewDetails} />
           ))}
         </div>
-
-        {/* Pagination */}
-        <Card>
-          <CardContent className="p-4">
-            <div className="flex justify-center items-center space-x-1">
-              <Button variant="outline" size="sm" className="h-8 w-8 p-0">
-                <ChevronLeft className="h-4 w-4" />
-              </Button>
-              <Button size="sm" className="h-8 w-8 p-0">
-                1
-              </Button>
-              <Button variant="outline" size="sm" className="h-8 w-8 p-0">
-                2
-              </Button>
-              <span className="px-2 text-muted-foreground">...</span>
-              <Button variant="outline" size="sm" className="h-8 w-8 p-0">
-                20
-              </Button>
-              <Button variant="outline" size="sm" className="h-8 w-8 p-0">
-                21
-              </Button>
-              <Button variant="outline" size="sm" className="h-8 w-8 p-0">
-                <ChevronRight className="h-4 w-4" />
-              </Button>
-              <Button variant="outline" size="sm">
-                Last
-              </Button>
-            </div>
-          </CardContent>
-        </Card>
       </div>
     </div>
   );

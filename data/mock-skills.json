@@ -1,802 +1,804 @@
-[
-  {
-    "id": "skill_001",
-    "name": "JavaScript",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_002",
-    "name": "Python",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_003",
-    "name": "React",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_004",
-    "name": "Node.js",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_005",
-    "name": "TypeScript",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_006",
-    "name": "Java",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_007",
-    "name": "C++",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_008",
-    "name": "Go",
-    "category": "Software Development",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_009",
-    "name": "Rust",
-    "category": "Software Development",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_010",
-    "name": "Swift",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_011",
-    "name": "Kotlin",
-    "category": "Software Development",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_012",
-    "name": "Docker",
-    "category": "DevOps",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_013",
-    "name": "Kubernetes",
-    "category": "DevOps",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_014",
-    "name": "AWS",
-    "category": "DevOps",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_015",
-    "name": "Azure",
-    "category": "DevOps",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_016",
-    "name": "Google Cloud Platform",
-    "category": "DevOps",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_017",
-    "name": "Terraform",
-    "category": "DevOps",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_018",
-    "name": "Jenkins",
-    "category": "DevOps",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_019",
-    "name": "GitLab CI/CD",
-    "category": "DevOps",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_020",
-    "name": "Ansible",
-    "category": "DevOps",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_021",
-    "name": "PostgreSQL",
-    "category": "Data & Analytics",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_022",
-    "name": "MySQL",
-    "category": "Data & Analytics",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_023",
-    "name": "MongoDB",
-    "category": "Data & Analytics",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_024",
-    "name": "Redis",
-    "category": "Data & Analytics",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_025",
-    "name": "Apache Spark",
-    "category": "Data & Analytics",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_026",
-    "name": "Hadoop",
-    "category": "Data & Analytics",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_027",
-    "name": "Tableau",
-    "category": "Data & Analytics",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_028",
-    "name": "Power BI",
-    "category": "Data & Analytics",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_029",
-    "name": "TensorFlow",
-    "category": "Data & Analytics",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_030",
-    "name": "PyTorch",
-    "category": "Data & Analytics",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_031",
-    "name": "Adobe Photoshop",
-    "category": "Design & Creative",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_032",
-    "name": "Adobe Illustrator",
-    "category": "Design & Creative",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_033",
-    "name": "Figma",
-    "category": "Design & Creative",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_034",
-    "name": "Sketch",
-    "category": "Design & Creative",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_035",
-    "name": "Adobe XD",
-    "category": "Design & Creative",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_036",
-    "name": "InVision",
-    "category": "Design & Creative",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_037",
-    "name": "Blender",
-    "category": "Design & Creative",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_038",
-    "name": "Cinema 4D",
-    "category": "Design & Creative",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_039",
-    "name": "Adobe Premiere Pro",
-    "category": "Design & Creative",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_040",
-    "name": "Final Cut Pro",
-    "category": "Design & Creative",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_041",
-    "name": "Salesforce",
-    "category": "Business & Marketing",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_042",
-    "name": "HubSpot",
-    "category": "Business & Marketing",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_043",
-    "name": "Google Analytics",
-    "category": "Business & Marketing",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_044",
-    "name": "Google Ads",
-    "category": "Business & Marketing",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_045",
-    "name": "Facebook Ads",
-    "category": "Business & Marketing",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_046",
-    "name": "LinkedIn Ads",
-    "category": "Business & Marketing",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_047",
-    "name": "Mailchimp",
-    "category": "Business & Marketing",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_048",
-    "name": "Hootsuite",
-    "category": "Business & Marketing",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_049",
-    "name": "Buffer",
-    "category": "Business & Marketing",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_050",
-    "name": "Canva",
-    "category": "Business & Marketing",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_051",
-    "name": "Microsoft Excel",
-    "category": "Office & Administration",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_052",
-    "name": "Microsoft Word",
-    "category": "Office & Administration",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_053",
-    "name": "Microsoft PowerPoint",
-    "category": "Office & Administration",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_054",
-    "name": "Microsoft Outlook",
-    "category": "Office & Administration",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_055",
-    "name": "Google Workspace",
-    "category": "Office & Administration",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_056",
-    "name": "Slack",
-    "category": "Office & Administration",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_057",
-    "name": "Microsoft Teams",
-    "category": "Office & Administration",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_058",
-    "name": "Zoom",
-    "category": "Office & Administration",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_059",
-    "name": "Asana",
-    "category": "Office & Administration",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_060",
-    "name": "Trello",
-    "category": "Office & Administration",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_061",
-    "name": "Jira",
-    "category": "Project Management",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_062",
-    "name": "Confluence",
-    "category": "Project Management",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_063",
-    "name": "Monday.com",
-    "category": "Project Management",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_064",
-    "name": "Notion",
-    "category": "Project Management",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_065",
-    "name": "ClickUp",
-    "category": "Project Management",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_066",
-    "name": "Basecamp",
-    "category": "Project Management",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_067",
-    "name": "Wrike",
-    "category": "Project Management",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_068",
-    "name": "Smartsheet",
-    "category": "Project Management",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_069",
-    "name": "Microsoft Project",
-    "category": "Project Management",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_070",
-    "name": "Adobe After Effects",
-    "category": "Design & Creative",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_071",
-    "name": "Vue.js",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_072",
-    "name": "Angular",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_073",
-    "name": "Svelte",
-    "category": "Software Development",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_074",
-    "name": "Next.js",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_075",
-    "name": "Nuxt.js",
-    "category": "Software Development",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_076",
-    "name": "GraphQL",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_077",
-    "name": "REST API",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_078",
-    "name": "Microservices",
-    "category": "Software Development",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_079",
-    "name": "Serverless",
-    "category": "Software Development",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_080",
-    "name": "Elasticsearch",
-    "category": "Data & Analytics",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_081",
-    "name": "Apache Kafka",
-    "category": "Data & Analytics",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_082",
-    "name": "Snowflake",
-    "category": "Data & Analytics",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_083",
-    "name": "Databricks",
-    "category": "Data & Analytics",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_084",
-    "name": "Looker",
-    "category": "Data & Analytics",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_085",
-    "name": "Segment",
-    "category": "Data & Analytics",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_086",
-    "name": "Puppet",
-    "category": "DevOps",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_087",
-    "name": "Chef",
-    "category": "DevOps",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_088",
-    "name": "Prometheus",
-    "category": "DevOps",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_089",
-    "name": "Grafana",
-    "category": "DevOps",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_090",
-    "name": "Splunk",
-    "category": "DevOps",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_091",
-    "name": "Adobe InDesign",
-    "category": "Design & Creative",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_092",
-    "name": "Adobe Lightroom",
-    "category": "Design & Creative",
-    "is_verified": true,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_093",
-    "name": "Adobe Audition",
-    "category": "Design & Creative",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_094",
-    "name": "Pro Tools",
-    "category": "Design & Creative",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_095",
-    "name": "Logic Pro",
-    "category": "Design & Creative",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_096",
-    "name": "Zapier",
-    "category": "Business & Marketing",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_097",
-    "name": "Airtable",
-    "category": "Business & Marketing",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_098",
-    "name": "Typeform",
-    "category": "Business & Marketing",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_099",
-    "name": "SurveyMonkey",
-    "category": "Business & Marketing",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  },
-  {
-    "id": "skill_100",
-    "name": "Qualtrics",
-    "category": "Business & Marketing",
-    "is_verified": false,
-    "created_at": "2024-01-15T10:00Z",
-    "updated_at": "2024-01-15T10:00:00Z"
-  }
-]
+{
+  "skills": [
+    {
+      "id": "skill_001",
+      "name": "JavaScript",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_002",
+      "name": "Python",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_003",
+      "name": "React",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_004",
+      "name": "Node.js",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_005",
+      "name": "TypeScript",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_006",
+      "name": "Java",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_007",
+      "name": "C++",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_008",
+      "name": "Go",
+      "category": "Software Development",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_009",
+      "name": "Rust",
+      "category": "Software Development",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_010",
+      "name": "Swift",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_011",
+      "name": "Kotlin",
+      "category": "Software Development",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_012",
+      "name": "Docker",
+      "category": "DevOps",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_013",
+      "name": "Kubernetes",
+      "category": "DevOps",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_014",
+      "name": "AWS",
+      "category": "DevOps",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_015",
+      "name": "Azure",
+      "category": "DevOps",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_016",
+      "name": "Google Cloud Platform",
+      "category": "DevOps",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_017",
+      "name": "Terraform",
+      "category": "DevOps",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_018",
+      "name": "Jenkins",
+      "category": "DevOps",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_019",
+      "name": "GitLab CI/CD",
+      "category": "DevOps",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_020",
+      "name": "Ansible",
+      "category": "DevOps",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_021",
+      "name": "PostgreSQL",
+      "category": "Data & Analytics",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_022",
+      "name": "MySQL",
+      "category": "Data & Analytics",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_023",
+      "name": "MongoDB",
+      "category": "Data & Analytics",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_024",
+      "name": "Redis",
+      "category": "Data & Analytics",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_025",
+      "name": "Apache Spark",
+      "category": "Data & Analytics",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_026",
+      "name": "Hadoop",
+      "category": "Data & Analytics",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_027",
+      "name": "Tableau",
+      "category": "Data & Analytics",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_028",
+      "name": "Power BI",
+      "category": "Data & Analytics",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_029",
+      "name": "TensorFlow",
+      "category": "Data & Analytics",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_030",
+      "name": "PyTorch",
+      "category": "Data & Analytics",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_031",
+      "name": "Adobe Photoshop",
+      "category": "Design & Creative",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_032",
+      "name": "Adobe Illustrator",
+      "category": "Design & Creative",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_033",
+      "name": "Figma",
+      "category": "Design & Creative",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_034",
+      "name": "Sketch",
+      "category": "Design & Creative",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_035",
+      "name": "Adobe XD",
+      "category": "Design & Creative",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_036",
+      "name": "InVision",
+      "category": "Design & Creative",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_037",
+      "name": "Blender",
+      "category": "Design & Creative",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_038",
+      "name": "Cinema 4D",
+      "category": "Design & Creative",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_039",
+      "name": "Adobe Premiere Pro",
+      "category": "Design & Creative",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_040",
+      "name": "Final Cut Pro",
+      "category": "Design & Creative",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_041",
+      "name": "Salesforce",
+      "category": "Business & Marketing",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_042",
+      "name": "HubSpot",
+      "category": "Business & Marketing",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_043",
+      "name": "Google Analytics",
+      "category": "Business & Marketing",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_044",
+      "name": "Google Ads",
+      "category": "Business & Marketing",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_045",
+      "name": "Facebook Ads",
+      "category": "Business & Marketing",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_046",
+      "name": "LinkedIn Ads",
+      "category": "Business & Marketing",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_047",
+      "name": "Mailchimp",
+      "category": "Business & Marketing",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_048",
+      "name": "Hootsuite",
+      "category": "Business & Marketing",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_049",
+      "name": "Buffer",
+      "category": "Business & Marketing",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_050",
+      "name": "Canva",
+      "category": "Business & Marketing",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_051",
+      "name": "Microsoft Excel",
+      "category": "Office & Administration",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_052",
+      "name": "Microsoft Word",
+      "category": "Office & Administration",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_053",
+      "name": "Microsoft PowerPoint",
+      "category": "Office & Administration",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_054",
+      "name": "Microsoft Outlook",
+      "category": "Office & Administration",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_055",
+      "name": "Google Workspace",
+      "category": "Office & Administration",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_056",
+      "name": "Slack",
+      "category": "Office & Administration",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_057",
+      "name": "Microsoft Teams",
+      "category": "Office & Administration",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_058",
+      "name": "Zoom",
+      "category": "Office & Administration",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_059",
+      "name": "Asana",
+      "category": "Office & Administration",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_060",
+      "name": "Trello",
+      "category": "Office & Administration",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_061",
+      "name": "Jira",
+      "category": "Project Management",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_062",
+      "name": "Confluence",
+      "category": "Project Management",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_063",
+      "name": "Monday.com",
+      "category": "Project Management",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_064",
+      "name": "Notion",
+      "category": "Project Management",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_065",
+      "name": "ClickUp",
+      "category": "Project Management",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_066",
+      "name": "Basecamp",
+      "category": "Project Management",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_067",
+      "name": "Wrike",
+      "category": "Project Management",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_068",
+      "name": "Smartsheet",
+      "category": "Project Management",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_069",
+      "name": "Microsoft Project",
+      "category": "Project Management",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_070",
+      "name": "Adobe After Effects",
+      "category": "Design & Creative",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_071",
+      "name": "Vue.js",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_072",
+      "name": "Angular",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_073",
+      "name": "Svelte",
+      "category": "Software Development",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_074",
+      "name": "Next.js",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_075",
+      "name": "Nuxt.js",
+      "category": "Software Development",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_076",
+      "name": "GraphQL",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_077",
+      "name": "REST API",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_078",
+      "name": "Microservices",
+      "category": "Software Development",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_079",
+      "name": "Serverless",
+      "category": "Software Development",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_080",
+      "name": "Elasticsearch",
+      "category": "Data & Analytics",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_081",
+      "name": "Apache Kafka",
+      "category": "Data & Analytics",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_082",
+      "name": "Snowflake",
+      "category": "Data & Analytics",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_083",
+      "name": "Databricks",
+      "category": "Data & Analytics",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_084",
+      "name": "Looker",
+      "category": "Data & Analytics",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_085",
+      "name": "Segment",
+      "category": "Data & Analytics",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_086",
+      "name": "Puppet",
+      "category": "DevOps",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_087",
+      "name": "Chef",
+      "category": "DevOps",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_088",
+      "name": "Prometheus",
+      "category": "DevOps",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_089",
+      "name": "Grafana",
+      "category": "DevOps",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_090",
+      "name": "Splunk",
+      "category": "DevOps",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_091",
+      "name": "Adobe InDesign",
+      "category": "Design & Creative",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_092",
+      "name": "Adobe Lightroom",
+      "category": "Design & Creative",
+      "is_verified": true,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_093",
+      "name": "Adobe Audition",
+      "category": "Design & Creative",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_094",
+      "name": "Pro Tools",
+      "category": "Design & Creative",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_095",
+      "name": "Logic Pro",
+      "category": "Design & Creative",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_096",
+      "name": "Zapier",
+      "category": "Business & Marketing",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_097",
+      "name": "Airtable",
+      "category": "Business & Marketing",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_098",
+      "name": "Typeform",
+      "category": "Business & Marketing",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_099",
+      "name": "SurveyMonkey",
+      "category": "Business & Marketing",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    },
+    {
+      "id": "skill_100",
+      "name": "Qualtrics",
+      "category": "Business & Marketing",
+      "is_verified": false,
+      "created_at": "2024-01-15T10:00Z",
+      "updated_at": "2024-01-15T10:00:00Z"
+    }
+  ]
+}

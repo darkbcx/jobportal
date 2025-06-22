@@ -138,6 +138,9 @@ export interface JobPosting extends BaseEntity {
   published_at?: Date;
   archived_at?: Date;
   employer_id: string;
+  // --- RELATED DATA ---
+  employer?: Employer;
+  required_skills?: string[];
 }
 
 export interface Application extends BaseEntity {
@@ -567,4 +570,12 @@ export interface ApplicationForm {
   cover_letter?: string;
   resume_id: string;
   salary_expectation?: number;
+}
+
+// ============================================================================
+// 
+// ============================================================================
+export interface listParams {
+  offset?: number;
+  limit?: number;
 }
