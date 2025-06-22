@@ -1,7 +1,7 @@
 "use client";
 
-import { useState } from "react";
-import { useRouter } from "next/navigation";
+import { useState, useEffect } from "react";
+import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -34,7 +34,7 @@ import {
   AlertCircle,
   Loader2
 } from "lucide-react";
-import { login } from "@/actions/auth";
+import { useUser } from "@/lib/contexts/UserContext";
 
 // Login validation schema
 const loginSchema = z.object({
@@ -47,9 +47,9 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const router = useRouter();
+  const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
-  const [isLoading, setIsLoading] = useState(false);
-  const [loginError, setLoginError] = useState("");
+  const { login, state: { isLoading, error, isAuthenticated } } = useUser();
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -60,26 +60,20 @@ export default function LoginPage() {
     },
   });
 
+  // Handle redirect after successful login
+  useEffect(() => {
+    if (isAuthenticated) {
+      const redirectTo = searchParams.get('redirect') || '/';
+      router.replace(redirectTo);
+    }
+  }, [isAuthenticated, router, searchParams]);
+
   const onSubmit = async (data: LoginFormData) => {
-    setIsLoading(true);
-    setLoginError("");
-
     try {
-      // Here you would typically send the login data to your backend
-      console.log("Login data:", { ...data });
-
-      const processedData = await login(data.email, data.password);
-
-      if (processedData.error) {
-        setLoginError(processedData.error);
-      } else {
-        router.replace("/");
-      }
+      await login(data.email, data.password);
+      // The redirect will be handled by the useEffect above
     } catch (error) {
       console.error("Login failed:", error);
-      setLoginError("An error occurred during login. Please try again.");
-    } finally {
-      setIsLoading(false);
     }
   };
 
@@ -172,10 +166,10 @@ export default function LoginPage() {
                   )}
                 />
 
-                {loginError && (
+                {error && (
                   <Alert variant="destructive">
                     <AlertCircle className="h-4 w-4" />
-                    <AlertDescription>{loginError}</AlertDescription>
+                    <AlertDescription>{error}</AlertDescription>
                   </Alert>
                 )}
 

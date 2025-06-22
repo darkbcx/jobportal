@@ -1,6 +1,7 @@
 "use server";
 import userData from "@/data/mock-users.json";
 import crypto from "crypto";
+import { setAuthCookie, clearAuthCookie, getAuthUser, type AuthUser } from "@/lib/auth-utils";
 
 export async function login(email: string, password: string) {
   // Simulate API call
@@ -10,9 +11,23 @@ export async function login(email: string, password: string) {
   if (!user) {
     return { error: "User not found" };
   }
+  
   const hashedPassword = crypto.createHash("md5").update(password).digest("hex");
   if (user.password_hash !== hashedPassword) {
     return { error: "Invalid password" };
   }
+
+  // Set user data in cookie using utility function
+  await setAuthCookie(user as AuthUser);
+
   return { success: true, user };
+}
+
+export async function logout() {
+  await clearAuthCookie();
+  return { success: true };
+}
+
+export async function getCurrentUser() {
+  return await getAuthUser();
 }
