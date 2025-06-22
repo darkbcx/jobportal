@@ -1,0 +1,60 @@
+{
+  "users": [
+    {
+      "id": "js_001",
+      "email": "sarah.chen@email.com",
+      "password_hash": "2a9d119df47ff993b662a8ef36f9ea20",
+      "user_type": "JOB_SEEKER",
+      "is_active": true,
+      "last_login": "2024-01-15T10:30:00Z",
+      "created_at": "2023-06-15T09:00:00Z",
+      "updated_at": "2024-01-15T10:30:00Z",
+      "first_name": "Sarah",
+      "last_name": "Chen",
+      "profile_photo_url": "https://example.com/photos/sarah-chen.jpg",
+      "phone_number": "+1-555-0123",
+      "location": "San Francisco, CA",
+      "profile_visibility": "PUBLIC",
+      "public_profile_url": "https://jobportal.com/profile/sarah-chen",
+      "bio": "Full-stack developer with 5+ years of experience in React, Node.js, and cloud technologies. Passionate about building scalable web applications and contributing to open-source projects.",
+      "availability_status": "ACTIVELY_LOOKING"
+    },
+    {
+      "id": "emp_001",
+      "email": "hr@techstartup.com",
+      "password_hash": "2a9d119df47ff993b662a8ef36f9ea20",
+      "user_type": "EMPLOYER",
+      "is_active": true,
+      "last_login": "2024-01-15T14:45:00Z",
+      "created_at": "2023-03-10T08:00:00Z",
+      "updated_at": "2024-01-15T14:45:00Z",
+      "company_name": "TechStartup Inc.",
+      "company_description": "A fast-growing technology company focused on AI-powered solutions for enterprise clients. We're building the future of work with innovative software products.",
+      "industry": "Technology",
+      "company_size": "MEDIUM",
+      "website": "https://techstartup.com",
+      "logo_url": "https://example.com/logos/techstartup-logo.png",
+      "headquarters_location": "Austin, TX",
+      "subscription_plan_id": "plan_premium_001"
+    },
+    {
+      "id": "admin_001",
+      "email": "admin@jobportal.com",
+      "password_hash": "2a9d119df47ff993b662a8ef36f9ea20",
+      "user_type": "ADMIN",
+      "is_active": true,
+      "last_login": "2024-01-15T16:20:00Z",
+      "created_at": "2023-01-01T00:00:00Z",
+      "updated_at": "2024-01-15T16:20:00Z",
+      "admin_level": "SUPER_ADMIN",
+      "permissions": [
+        "manage_users",
+        "manage_companies",
+        "moderate_content",
+        "view_analytics",
+        "manage_system_settings",
+        "support_tickets"
+      ]
+    }
+  ]
+} 
