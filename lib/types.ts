@@ -38,7 +38,7 @@ export type AttendanceStatus = 'ATTENDED' | 'NO_SHOW' | 'CANCELLED';
 
 export type ReviewerType = 'JOB_SEEKER' | 'EMPLOYER';
 
-export type RevieweeType = 'COMPANY' | 'CANDIDATE';
+export type RevieweeType = 'EMPLOYER' | 'CANDIDATE';
 
 export type DeliveryMethod = 'EMAIL' | 'SMS' | 'IN_APP' | 'PUSH';
 
@@ -99,32 +99,18 @@ export interface Employer extends User {
   logo_url?: string;
   headquarters_location?: string;
   subscription_plan_id?: string;
-}
-
-export interface Admin extends User {
-  admin_level: AdminLevel;
-  permissions: string[];
-}
-
-// ============================================================================
-// COMPANY ENTITY
-// ============================================================================
-
-export interface Company extends BaseEntity {
-  name: string;
-  description?: string;
-  industry?: string;
-  size?: CompanySize;
   founded_year?: number;
-  website?: string;
-  logo_url?: string;
-  headquarters?: string;
   locations?: string[];
   culture_description?: string;
   benefits?: string[];
   rating_average?: number;
   review_count: number;
   is_verified: boolean;
+}
+
+export interface Admin extends User {
+  admin_level: AdminLevel;
+  permissions: string[];
 }
 
 // ============================================================================
@@ -151,7 +137,6 @@ export interface JobPosting extends BaseEntity {
   application_count: number;
   published_at?: Date;
   archived_at?: Date;
-  company_id: string;
   employer_id: string;
 }
 
@@ -236,6 +221,12 @@ export interface JobSeekerSkill {
   years_of_experience?: number;
 }
 
+export interface JobPostingSkill {
+  job_posting_id: string;
+  skill_id: string;
+  is_required: boolean;
+}
+
 export interface Certification extends BaseEntity {
   job_seeker_id: string;
   name: string;
@@ -273,7 +264,7 @@ export interface PortfolioItem extends BaseEntity {
 
 export interface CompanyFollow extends BaseEntity {
   job_seeker_id: string;
-  company_id: string;
+  employer_id: string;
   followed_at: Date;
 }
 
@@ -360,7 +351,7 @@ export interface NotificationPreferences extends BaseEntity {
   application_updates: boolean;
   job_matches: boolean;
   interview_reminders: boolean;
-  company_updates: boolean;
+  employer_updates: boolean;
   profile_views: boolean;
   message_notifications: boolean;
   marketing_emails: boolean;
