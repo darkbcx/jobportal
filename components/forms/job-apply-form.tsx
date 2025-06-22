@@ -12,6 +12,7 @@ import { Button } from "../ui/button";
 import { useForm, Controller } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { JobPosting } from "@/lib/types";
 
 // Zod validation schema
 const jobApplySchema = z.object({
@@ -36,15 +37,14 @@ const jobApplySchema = z.object({
 type FormData = z.infer<typeof jobApplySchema>;
 
 interface JobApplyFormProps {
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  mockJobDetails: any;
+  jobPosting: JobPosting;
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   handleSubmitApplication: (data: any) => void;
   cancelSubmitApplication: () => void;
 }
 
 export default function JobApplyForm({
-  mockJobDetails,
+  jobPosting,
   handleSubmitApplication,
   cancelSubmitApplication,
 }: JobApplyFormProps) {
@@ -75,10 +75,13 @@ export default function JobApplyForm({
   };
 
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const formatSalary = (salary: any) => {
-    return `$${salary.min.toLocaleString()} - $${salary.max.toLocaleString()} ${
-      salary.currency
-    } ${salary.period}`;
+  const formatSalary = (jobPosting: JobPosting) => {
+    if (!jobPosting.salary_min || !jobPosting.salary_max) {
+      return "Salary not specified";
+    }
+    return `$${jobPosting.salary_min.toLocaleString()} - $${jobPosting.salary_max.toLocaleString()} ${
+      jobPosting.salary_currency || "USD"
+    }`;
   };
 
   return (
@@ -98,7 +101,7 @@ export default function JobApplyForm({
                 })}
               />
               <p className="text-sm text-muted-foreground">
-                Company range: {formatSalary(mockJobDetails.salary)}
+                Company range: {formatSalary(jobPosting)}
               </p>
 
               {errors.preferredSalary && (

@@ -26,6 +26,7 @@ import {
 import JobApplyForm from "./forms/job-apply-form";
 import { getJobPosting } from "@/actions/jobposting";
 import { JobPosting } from "@/lib/types";
+import { useUser } from "@/lib/contexts/UserContext";
 
 // interface ApplicationForm {
 //   fullName: string;
@@ -47,6 +48,7 @@ export default function JobDetails({ jobId }: JobDetailsProps) {
   const [showApplicationForm, setShowApplicationForm] = useState(false);
   const [jobPosting, setJobPosting] = useState<JobPosting | null>(null);
   const [loading, setLoading] = useState(true);
+  const { state: { user } } = useUser();
 
   useEffect(() => {
     const fetchJobPosting = async () => {
@@ -185,7 +187,7 @@ export default function JobDetails({ jobId }: JobDetailsProps) {
             )}
           </div>
 
-          {!showApplicationForm && (
+          {!showApplicationForm && user?.user_type === 'JOB_SEEKER' && (
             <div className="flex flex-wrap gap-4">
               <Button
                 size="lg"
@@ -213,7 +215,7 @@ export default function JobDetails({ jobId }: JobDetailsProps) {
             </CardHeader>
             <CardContent>
               <JobApplyForm
-                mockJobDetails={jobPosting}
+                jobPosting={jobPosting}
                 handleSubmitApplication={applySubmit}
                 cancelSubmitApplication={() => setShowApplicationForm(false)}
               />
