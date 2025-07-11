@@ -1,3 +1,4 @@
+"use server";
 import jobseekers from "@/data/mock-jobseeker-1.json";
 import { JobSeeker } from "@/lib/types";
 

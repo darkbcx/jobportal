@@ -1,18 +1,17 @@
 'use client';
 
 import React, { useState } from 'react';
-import { useUserProfile, useUser, isJobSeeker, isEmployer, isAdmin } from '@/lib/contexts/UserContext';
+import { useUser, isJobSeeker, isJobSeekerProfile, isEmployerProfile, isAdminProfile } from '@/lib/contexts/UserContext';
 
 export const UserProfile: React.FC = () => {
-  const { user, updateUser } = useUserProfile();
-  const { logout } = useUser();
+  const { state: { user, profile }, updateUser, logout } = useUser();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    firstName: isJobSeeker(user) ? user.first_name : '',
-    lastName: isJobSeeker(user) ? user.last_name : '',
-    companyName: isEmployer(user) ? user.company_name : '',
-    bio: isJobSeeker(user) ? user.bio || '' : '',
-    location: isJobSeeker(user) ? user.location || '' : '',
+    firstName: isJobSeekerProfile(profile) ? profile.first_name : '',
+    lastName: isJobSeekerProfile(profile) ? profile.last_name : '',
+    companyName: isEmployerProfile(profile) ? profile.company_name : '',
+    bio: isJobSeekerProfile(profile) ? profile.bio || '' : '',
+    location: isJobSeekerProfile(profile) ? profile.location || '' : '',
   });
 
   if (!user) {
@@ -82,7 +81,7 @@ export const UserProfile: React.FC = () => {
             </div>
           </div>
 
-          {isEmployer(user) && (
+          {isEmployerProfile(profile) && (
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
                 Company Name
@@ -96,7 +95,7 @@ export const UserProfile: React.FC = () => {
             </div>
           )}
 
-          {isJobSeeker(user) && (
+          {isJobSeekerProfile(profile) && (
             <>
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">
@@ -152,44 +151,44 @@ export const UserProfile: React.FC = () => {
             </div>
           </div>
 
-          {isJobSeeker(user) && (
+          {isJobSeekerProfile(profile) && (
             <>
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <label className="block text-sm font-medium text-gray-700">First Name</label>
-                  <p className="text-gray-900">{user.first_name}</p>
+                  <p className="text-gray-900">{profile.first_name}</p>
                 </div>
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Last Name</label>
-                  <p className="text-gray-900">{user.last_name}</p>
+                  <p className="text-gray-900">{profile.last_name}</p>
                 </div>
               </div>
-              {user.location && (
+              {profile.location && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Location</label>
-                  <p className="text-gray-900">{user.location}</p>
+                  <p className="text-gray-900">{profile.location}</p>
                 </div>
               )}
-              {user.bio && (
+              {profile.bio && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700">Bio</label>
-                  <p className="text-gray-900">{user.bio}</p>
+                  <p className="text-gray-900">{profile.bio}</p>
                 </div>
               )}
             </>
           )}
 
-          {isEmployer(user) && (
+          {isEmployerProfile(profile) && (
             <div>
               <label className="block text-sm font-medium text-gray-700">Company Name</label>
-              <p className="text-gray-900">{user.company_name}</p>
+              <p className="text-gray-900">{profile.company_name}</p>
             </div>
           )}
 
-          {isAdmin(user) && (
+          {isAdminProfile(profile) && (
             <div>
               <label className="block text-sm font-medium text-gray-700">Admin Level</label>
-              <p className="text-gray-900 capitalize">{user.admin_level.replace('_', ' ').toLowerCase()}</p>
+              <p className="text-gray-900 capitalize">{profile.admin_level.replace('_', ' ').toLowerCase()}</p>
             </div>
           )}
         </div>

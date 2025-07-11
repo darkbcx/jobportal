@@ -19,12 +19,17 @@ import {
   DropdownMenuTrigger,
   DropdownMenuSeparator,
 } from "./ui/dropdown-menu";
-import { useUser } from "@/lib/contexts/UserContext";
+import {
+  isAdminProfile,
+  isEmployerProfile,
+  isJobSeekerProfile,
+  useUser,
+} from "@/lib/contexts/UserContext";
 import { User } from "@/lib/types";
 
 export default function WebHeader() {
   const {
-    state: { user, isAuthenticated, isLoading },
+    state: { user, isAuthenticated, isLoading, profile },
     logout,
   } = useUser();
 
@@ -47,12 +52,18 @@ export default function WebHeader() {
     }
   };
 
-  const getUserDisplayName = (
-    user: User | null
-  ): string => {
+  const getUserDisplayName = (user: User | null): string => {
     if (!user) return "Unknown User";
 
-    return user.email;
+    if (user.user_type === "JOB_SEEKER" && isJobSeekerProfile(profile)) {
+      return `${profile?.first_name} ${profile?.last_name}`;
+    } else if (user.user_type === "EMPLOYER" && isEmployerProfile(profile)) {
+      return profile?.company_name;
+    } else if (user.user_type === "ADMIN" && isAdminProfile(profile)) {
+      return profile?.admin_level;
+    } else {
+      return user.email;
+    }
   };
 
   return (

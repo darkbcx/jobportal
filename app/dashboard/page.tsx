@@ -1,12 +1,28 @@
 'use client';
 
-import { useUser } from '@/lib/contexts/UserContext';
+import { useUser, isJobSeekerProfile, isEmployerProfile } from '@/lib/contexts/UserContext';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
-import { LogOut, User, Building, Briefcase } from 'lucide-react';
+import { LogOut, User, Building, Briefcase, Loader2 } from 'lucide-react';
 
 export default function DashboardPage() {
-  const { state: { user, isAuthenticated }, logout } = useUser();
+  const { state: { user, isAuthenticated, isLoading, profile }, logout } = useUser();
+
+  if (isLoading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center">
+        <Card className="w-full max-w-md">
+          <CardHeader>
+            <CardTitle>Loading...</CardTitle>
+            <CardDescription>Please wait while we load your account information.</CardDescription>
+          </CardHeader>
+          <CardContent className="flex justify-center">
+            <Loader2 className="h-8 w-8 animate-spin" />
+          </CardContent>
+        </Card>
+      </div>
+    );
+  }
 
   if (!isAuthenticated || !user) {
     return (
@@ -101,6 +117,69 @@ export default function DashboardPage() {
                   </p>
                 </div>
               </div>
+            </CardContent>
+          </Card>
+
+          {/* Profile Info Card */}
+          <Card>
+            <CardHeader>
+              <CardTitle className="flex items-center gap-2">
+                Profile Information
+                {isLoading && <Loader2 className="h-4 w-4 animate-spin" />}
+              </CardTitle>
+              <CardDescription>Your detailed profile information</CardDescription>
+            </CardHeader>
+            <CardContent>
+              {isLoading ? (
+                <div className="flex justify-center py-4">
+                  <Loader2 className="h-6 w-6 animate-spin" />
+                </div>
+              ) : profile ? (
+                <div className="space-y-2">
+                  {isJobSeekerProfile(profile) && (
+                    <>
+                      <div>
+                        <span className="text-sm font-medium text-gray-500">Name:</span>
+                        <p className="text-sm">{profile.first_name} {profile.last_name}</p>
+                      </div>
+                      {profile.location && (
+                        <div>
+                          <span className="text-sm font-medium text-gray-500">Location:</span>
+                          <p className="text-sm">{profile.location}</p>
+                        </div>
+                      )}
+                      {profile.bio && (
+                        <div>
+                          <span className="text-sm font-medium text-gray-500">Bio:</span>
+                          <p className="text-sm">{profile.bio.substring(0, 100)}...</p>
+                        </div>
+                      )}
+                    </>
+                  )}
+                  {isEmployerProfile(profile) && (
+                    <>
+                      <div>
+                        <span className="text-sm font-medium text-gray-500">Company:</span>
+                        <p className="text-sm">{profile.company_name}</p>
+                      </div>
+                      {profile.industry && (
+                        <div>
+                          <span className="text-sm font-medium text-gray-500">Industry:</span>
+                          <p className="text-sm">{profile.industry}</p>
+                        </div>
+                      )}
+                      {profile.headquarters_location && (
+                        <div>
+                          <span className="text-sm font-medium text-gray-500">Location:</span>
+                          <p className="text-sm">{profile.headquarters_location}</p>
+                        </div>
+                      )}
+                    </>
+                  )}
+                </div>
+              ) : (
+                <p className="text-sm text-gray-500">No profile information available</p>
+              )}
             </CardContent>
           </Card>
 

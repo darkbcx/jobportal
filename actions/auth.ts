@@ -1,14 +1,14 @@
 "use server";
-import userData from "@/data/mock-users.json";
 import crypto from "crypto";
 import { setAuthCookie, clearAuthCookie, getAuthUser } from "@/lib/auth-utils";
 import { AuthUser } from "@/lib/types";
+import { getUserByEmail } from "./user";
 
 export async function login(email: string, password: string) {
   // Simulate API call
   await new Promise((resolve) => setTimeout(resolve, 1500));
 
-  const user = userData.users.find((user) => user.email === email);
+  const user = await getUserByEmail(email);
   if (!user) {
     return { error: "User not found" };
   }

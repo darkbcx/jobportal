@@ -1,8 +1,10 @@
 'use client';
 
-import React, { createContext, useContext, useReducer, useEffect, ReactNode } from 'react';
+import React, { createContext, useContext, useReducer, useEffect, ReactNode, useCallback } from 'react';
 import { User, JobSeeker, Employer, Admin, UserType } from '../types';
 import { login as authLogin, logout as authLogout, getCurrentUser } from '@/actions/auth';
+import { getJobSeekerByUserId } from '@/actions/jobseeker';
+import { getEmployerByUserId } from '@/actions/employer';
 
 // ============================================================================
 // CONTEXT TYPES
@@ -10,6 +12,7 @@ import { login as authLogin, logout as authLogout, getCurrentUser } from '@/acti
 
 interface UserState {
   user: User | null;
+  profile: JobSeeker | Employer | Admin | null;
   isLoading: boolean;
   isAuthenticated: boolean;
   error: string | null;
@@ -18,6 +21,7 @@ interface UserState {
 type UserAction =
   | { type: 'SET_LOADING'; payload: boolean }
   | { type: 'SET_USER'; payload: User }
+  | { type: 'SET_PROFILE'; payload: JobSeeker | Employer | Admin | null }
   | { type: 'SET_ERROR'; payload: string | null }
   | { type: 'LOGOUT' }
   | { type: 'CLEAR_ERROR' };
@@ -29,6 +33,7 @@ interface UserContextType {
   register: (userData: RegisterData) => Promise<void>;
   updateUser: (userData: Partial<User | JobSeeker | Employer | Admin>) => Promise<void>;
   refreshUser: () => Promise<void>;
+  loadProfile: () => Promise<void>;
 }
 
 interface RegisterData {
@@ -56,12 +61,15 @@ const userReducer = (state: UserState, action: UserAction): UserState => {
         error: null,
         isLoading: false,
       };
+    case 'SET_PROFILE':
+      return { ...state, profile: action.payload };
     case 'SET_ERROR':
       return { ...state, error: action.payload, isLoading: false };
     case 'LOGOUT':
       return {
         ...state,
         user: null,
+        profile: null,
         isAuthenticated: false,
         error: null,
         isLoading: false,
@@ -90,6 +98,7 @@ interface UserProviderProps {
 export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const [state, dispatch] = useReducer(userReducer, {
     user: null,
+    profile: null,
     isLoading: true,
     isAuthenticated: false,
     error: null,
@@ -116,6 +125,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
         // Cast the user data to match our TypeScript types
         const user = result.user as unknown as User;
         dispatch({ type: 'SET_USER', payload: user });
+        await loadProfileForUser(user);
       } else {
         dispatch({ type: 'SET_ERROR', payload: 'Login failed' });
       }
@@ -178,7 +188,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     }
   };
 
-  const refreshUser = async (): Promise<void> => {
+  const refreshUser = useCallback(async (): Promise<void> => {
     try {
       // Get user from server-side cookie
       dispatch({ type: 'SET_LOADING', payload: true });
@@ -187,6 +197,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       if (user) {
           const typedUser = user as unknown as User;
         dispatch({ type: 'SET_USER', payload: typedUser });
+        await loadProfileForUser(typedUser);
       } else {
         dispatch({ type: 'LOGOUT' });
       }
@@ -194,6 +205,39 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       console.error('Refresh user error:', error);
       dispatch({ type: 'LOGOUT' });
     }
+  }, []);
+
+  const loadProfileForUser = async (user: User): Promise<void> => {
+    try {
+      dispatch({ type: 'SET_LOADING', payload: true });
+
+      if (user.user_type === 'JOB_SEEKER') {
+        const jobSeeker = await getJobSeekerByUserId(user.id);
+        dispatch({ type: 'SET_PROFILE', payload: jobSeeker || null });
+      } else if (user.user_type === 'EMPLOYER') {
+        const employer = await getEmployerByUserId(user.id);
+        dispatch({ type: 'SET_PROFILE', payload: employer || null });
+      } else if (user.user_type === 'ADMIN') {
+        // For now, treat admin as having no additional profile data
+        dispatch({ type: 'SET_PROFILE', payload: null });
+      } else {
+        dispatch({ type: 'SET_PROFILE', payload: null });
+      }
+    } catch (error) {
+      console.error('Load profile error:', error);
+      dispatch({ type: 'SET_PROFILE', payload: null });
+    } finally {
+      dispatch({ type: 'SET_LOADING', payload: false });
+    }
+  };
+
+  const loadProfile = async (): Promise<void> => {
+    const user = state.user;
+    if (!user) {
+      dispatch({ type: 'SET_PROFILE', payload: null });
+      return;
+    }
+    await loadProfileForUser(user);
   };
 
   // ============================================================================
@@ -203,7 +247,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   // Check for existing session on mount
   useEffect(() => {
     refreshUser();
-  }, []);
+  }, [refreshUser]);
 
   // ============================================================================
   // CONTEXT VALUE
@@ -216,6 +260,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
     register,
     updateUser,
     refreshUser,
+    loadProfile,
   };
 
   return (
@@ -237,18 +282,7 @@ export const useUser = (): UserContextType => {
   return context;
 };
 
-// ============================================================================
-// UTILITY HOOKS
-// ============================================================================
 
-export const useUserProfile = () => {
-  const { state, updateUser, refreshUser } = useUser();
-  return {
-    user: state.user,
-    updateUser,
-    refreshUser,
-  };
-};
 
 // Type guards for better type safety
 export const isJobSeeker = (user: User | null) => {
@@ -261,4 +295,17 @@ export const isEmployer = (user: User | null) => {
 
 export const isAdmin = (user: User | null) => {
   return user?.user_type === 'ADMIN';
+};
+
+// Profile type guards
+export const isJobSeekerProfile = (profile: JobSeeker | Employer | Admin | null): profile is JobSeeker => {
+  return profile !== null && 'first_name' in profile && 'last_name' in profile;
+};
+
+export const isEmployerProfile = (profile: JobSeeker | Employer | Admin | null): profile is Employer => {
+  return profile !== null && 'company_name' in profile;
+};
+
+export const isAdminProfile = (profile: JobSeeker | Employer | Admin | null): profile is Admin => {
+  return profile !== null && 'admin_level' in profile;
 }; 
