@@ -9,7 +9,7 @@ import { login as authLogin, logout as authLogout, getCurrentUser } from '@/acti
 // ============================================================================
 
 interface UserState {
-  user: User | JobSeeker | Employer | Admin | null;
+  user: User | null;
   isLoading: boolean;
   isAuthenticated: boolean;
   error: string | null;
@@ -17,7 +17,7 @@ interface UserState {
 
 type UserAction =
   | { type: 'SET_LOADING'; payload: boolean }
-  | { type: 'SET_USER'; payload: User | JobSeeker | Employer | Admin | null }
+  | { type: 'SET_USER'; payload: User }
   | { type: 'SET_ERROR'; payload: string | null }
   | { type: 'LOGOUT' }
   | { type: 'CLEAR_ERROR' };
@@ -114,7 +114,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
 
       if (result.success && result.user) {
         // Cast the user data to match our TypeScript types
-        const user = result.user as unknown as User | JobSeeker | Employer | Admin;
+        const user = result.user as unknown as User;
         dispatch({ type: 'SET_USER', payload: user });
       } else {
         dispatch({ type: 'SET_ERROR', payload: 'Login failed' });
@@ -146,39 +146,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       dispatch({ type: 'SET_LOADING', payload: true });
       dispatch({ type: 'CLEAR_ERROR' });
 
-      // For mock implementation, simulate registration
-      // In a real implementation, you would call the register API
-      const mockUser: User = {
-        id: `user_${Date.now()}`,
-        email: userData.email,
-        password_hash: '', // In real implementation, this would be hashed
-        user_type: userData.userType,
-        is_active: true,
-        created_at: new Date(),
-        updated_at: new Date(),
-      };
-
-      // Add user-specific fields based on user type
-      let fullUser: User | JobSeeker | Employer | Admin;
-      
-      if (userData.userType === 'JOB_SEEKER') {
-        fullUser = {
-          ...mockUser,
-          first_name: userData.firstName || '',
-          last_name: userData.lastName || '',
-          profile_visibility: 'PUBLIC',
-          availability_status: 'ACTIVELY_LOOKING',
-        } as JobSeeker;
-      } else if (userData.userType === 'EMPLOYER') {
-        fullUser = {
-          ...mockUser,
-          company_name: userData.companyName || '',
-        } as Employer;
-      } else {
-        fullUser = mockUser;
-      }
-
-      dispatch({ type: 'SET_USER', payload: fullUser });
+      dispatch({ type: 'SET_USER', payload: userData as unknown as User });
     } catch (error) {
       dispatch({ 
         type: 'SET_ERROR', 
@@ -217,7 +185,7 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
       const user = await getCurrentUser();
       dispatch({ type: 'SET_LOADING', payload: false });
       if (user) {
-        const typedUser = user as unknown as User | JobSeeker | Employer | Admin;
+          const typedUser = user as unknown as User;
         dispatch({ type: 'SET_USER', payload: typedUser });
       } else {
         dispatch({ type: 'LOGOUT' });
@@ -283,14 +251,14 @@ export const useUserProfile = () => {
 };
 
 // Type guards for better type safety
-export const isJobSeeker = (user: User | JobSeeker | Employer | Admin | null): user is JobSeeker => {
+export const isJobSeeker = (user: User | null) => {
   return user?.user_type === 'JOB_SEEKER';
 };
 
-export const isEmployer = (user: User | JobSeeker | Employer | Admin | null): user is Employer => {
+export const isEmployer = (user: User | null) => {
   return user?.user_type === 'EMPLOYER';
 };
 
-export const isAdmin = (user: User | JobSeeker | Employer | Admin | null): user is Admin => {
+export const isAdmin = (user: User | null) => {
   return user?.user_type === 'ADMIN';
 }; 

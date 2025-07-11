@@ -78,8 +78,10 @@ export interface User extends BaseEntity {
   last_login?: Date;
 }
 
-export interface JobSeeker extends User {
-  user_type: 'JOB_SEEKER';
+export type AuthUser = Omit<User, 'password_hash'>;
+
+export interface JobSeeker extends BaseEntity {
+  user_id: string;
   first_name: string;
   last_name: string;
   profile_photo_url?: string;
@@ -91,8 +93,8 @@ export interface JobSeeker extends User {
   availability_status: AvailabilityStatus;
 }
 
-export interface Employer extends User {
-  user_type: 'EMPLOYER';
+export interface Employer extends BaseEntity {
+  user_id: string;
   company_name: string;
   company_description?: string;
   industry?: string;
@@ -110,8 +112,8 @@ export interface Employer extends User {
   is_verified: boolean;
 }
 
-export interface Admin extends User {
-  user_type: 'ADMIN';
+export interface Admin extends BaseEntity {
+  user_id: string;
   admin_level: AdminLevel;
   permissions: string[];
 }

@@ -1,7 +1,8 @@
 "use server";
 import userData from "@/data/mock-users.json";
 import crypto from "crypto";
-import { setAuthCookie, clearAuthCookie, getAuthUser, type AuthUser } from "@/lib/auth-utils";
+import { setAuthCookie, clearAuthCookie, getAuthUser } from "@/lib/auth-utils";
+import { AuthUser } from "@/lib/types";
 
 export async function login(email: string, password: string) {
   // Simulate API call
@@ -18,7 +19,7 @@ export async function login(email: string, password: string) {
   }
 
   // Set user data in cookie using utility function
-  await setAuthCookie(user as AuthUser);
+  await setAuthCookie(user as unknown as AuthUser);
 
   return { success: true, user };
 }

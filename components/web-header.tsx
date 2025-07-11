@@ -5,7 +5,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import {
   ChevronDownIcon,
-  User,
+  User as UserIcon,
   LogOut,
   Settings,
   Building,
@@ -20,7 +20,7 @@ import {
   DropdownMenuSeparator,
 } from "./ui/dropdown-menu";
 import { useUser } from "@/lib/contexts/UserContext";
-import { User as UserType, JobSeeker, Employer, Admin } from "@/lib/types";
+import { User } from "@/lib/types";
 
 export default function WebHeader() {
   const {
@@ -33,37 +33,24 @@ export default function WebHeader() {
   };
 
   const getUserIcon = () => {
-    if (!user) return <User className="h-4 w-4" />;
+    if (!user) return <UserIcon className="h-4 w-4" />;
 
     switch (user.user_type) {
       case "JOB_SEEKER":
-        return <User className="h-4 w-4" />;
+        return <UserIcon className="h-4 w-4" />;
       case "EMPLOYER":
         return <Building className="h-4 w-4" />;
       case "ADMIN":
         return <Briefcase className="h-4 w-4" />;
       default:
-        return <User className="h-4 w-4" />;
+        return <UserIcon className="h-4 w-4" />;
     }
   };
 
   const getUserDisplayName = (
-    user: UserType | JobSeeker | Employer | Admin | null
+    user: User | null
   ): string => {
     if (!user) return "Unknown User";
-
-    if (user.user_type === "JOB_SEEKER") {
-      const jobSeeker = user as JobSeeker;
-      return (
-        `${jobSeeker.first_name || ""} ${jobSeeker.last_name || ""}`.trim() ||
-        user.email
-      );
-    }
-
-    if (user.user_type === "EMPLOYER") {
-      const employer = user as Employer;
-      return employer.company_name || user.email;
-    }
 
     return user.email;
   };
@@ -118,7 +105,7 @@ export default function WebHeader() {
                     </DropdownMenuItem>
                     <DropdownMenuItem asChild>
                       <Link href="/profile" className="flex items-center gap-2">
-                        <User className="h-4 w-4" />
+                        <UserIcon className="h-4 w-4" />
                         Profile
                       </Link>
                     </DropdownMenuItem>

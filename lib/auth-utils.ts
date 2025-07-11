@@ -1,14 +1,5 @@
 import { cookies } from 'next/headers';
-
-export interface AuthUser {
-  id: string;
-  email: string;
-  user_type: string;
-  is_active: boolean;
-  created_at: string;
-  updated_at: string;
-  [key: string]: unknown;
-}
+import { AuthUser } from './types';
 
 /**
  * Set user authentication cookie
