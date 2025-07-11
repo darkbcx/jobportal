@@ -79,6 +79,7 @@ export interface User extends BaseEntity {
 }
 
 export interface JobSeeker extends User {
+  user_type: 'JOB_SEEKER';
   first_name: string;
   last_name: string;
   profile_photo_url?: string;
@@ -91,6 +92,7 @@ export interface JobSeeker extends User {
 }
 
 export interface Employer extends User {
+  user_type: 'EMPLOYER';
   company_name: string;
   company_description?: string;
   industry?: string;
@@ -109,6 +111,7 @@ export interface Employer extends User {
 }
 
 export interface Admin extends User {
+  user_type: 'ADMIN';
   admin_level: AdminLevel;
   permissions: string[];
 }

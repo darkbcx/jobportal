@@ -1,0 +1,377 @@
+[
+  {
+    "job_posting_id": "jp-001",
+    "skill_id": "skill_001",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-001",
+    "skill_id": "skill_003",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-001",
+    "skill_id": "skill_004",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-001",
+    "skill_id": "skill_014",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-001",
+    "skill_id": "skill_021",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-002",
+    "skill_id": "skill_002",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-002",
+    "skill_id": "skill_029",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-002",
+    "skill_id": "skill_030",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-002",
+    "skill_id": "skill_014",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-002",
+    "skill_id": "skill_025",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-003",
+    "skill_id": "skill_012",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-003",
+    "skill_id": "skill_013",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-003",
+    "skill_id": "skill_014",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-003",
+    "skill_id": "skill_002",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-003",
+    "skill_id": "skill_018",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-004",
+    "skill_id": "skill_051",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-004",
+    "skill_id": "skill_052",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-004",
+    "skill_id": "skill_053",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-004",
+    "skill_id": "skill_054",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-004",
+    "skill_id": "skill_055",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-005",
+    "skill_id": "skill_002",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-005",
+    "skill_id": "skill_021",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-005",
+    "skill_id": "skill_027",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-005",
+    "skill_id": "skill_028",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-005",
+    "skill_id": "skill_025",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-006",
+    "skill_id": "skill_069",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-006",
+    "skill_id": "skill_070",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-006",
+    "skill_id": "skill_071",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-006",
+    "skill_id": "skill_072",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-006",
+    "skill_id": "skill_073",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-007",
+    "skill_id": "skill_074",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-007",
+    "skill_id": "skill_075",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-007",
+    "skill_id": "skill_076",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-007",
+    "skill_id": "skill_077",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-007",
+    "skill_id": "skill_078",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-008",
+    "skill_id": "skill_079",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-008",
+    "skill_id": "skill_080",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-008",
+    "skill_id": "skill_081",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-008",
+    "skill_id": "skill_082",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-008",
+    "skill_id": "skill_083",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-009",
+    "skill_id": "skill_084",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-009",
+    "skill_id": "skill_085",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-009",
+    "skill_id": "skill_086",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-009",
+    "skill_id": "skill_087",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-009",
+    "skill_id": "skill_088",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-010",
+    "skill_id": "skill_089",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-010",
+    "skill_id": "skill_090",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-010",
+    "skill_id": "skill_091",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-010",
+    "skill_id": "skill_092",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-010",
+    "skill_id": "skill_093",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-011",
+    "skill_id": "skill_094",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-011",
+    "skill_id": "skill_095",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-011",
+    "skill_id": "skill_096",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-011",
+    "skill_id": "skill_097",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-011",
+    "skill_id": "skill_098",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-012",
+    "skill_id": "skill_099",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-012",
+    "skill_id": "skill_100",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-012",
+    "skill_id": "skill_021",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-012",
+    "skill_id": "skill_027",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-012",
+    "skill_id": "skill_101",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-013",
+    "skill_id": "skill_001",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-013",
+    "skill_id": "skill_002",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-013",
+    "skill_id": "skill_076",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-013",
+    "skill_id": "skill_078",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-013",
+    "skill_id": "skill_014",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-014",
+    "skill_id": "skill_002",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-014",
+    "skill_id": "skill_021",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-014",
+    "skill_id": "skill_027",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-014",
+    "skill_id": "skill_029",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-014",
+    "skill_id": "skill_043",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-015",
+    "skill_id": "skill_102",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-015",
+    "skill_id": "skill_103",
+    "is_required": true
+  },
+  {
+    "job_posting_id": "jp-015",
+    "skill_id": "skill_104",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-015",
+    "skill_id": "skill_105",
+    "is_required": false
+  },
+  {
+    "job_posting_id": "jp-015",
+    "skill_id": "skill_106",
+    "is_required": false
+  }
+]
