@@ -213,8 +213,9 @@ export const UserProvider: React.FC<UserProviderProps> = ({ children }) => {
   const refreshUser = async (): Promise<void> => {
     try {
       // Get user from server-side cookie
+      dispatch({ type: 'SET_LOADING', payload: true });
       const user = await getCurrentUser();
-      
+      dispatch({ type: 'SET_LOADING', payload: false });
       if (user) {
         const typedUser = user as unknown as User | JobSeeker | Employer | Admin;
         dispatch({ type: 'SET_USER', payload: typedUser });
