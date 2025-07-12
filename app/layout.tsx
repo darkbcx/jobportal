@@ -1,12 +1,13 @@
+import { SessionProvider } from "next-auth/react"
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
+import { Toaster } from "@/components/ui/sonner"
 
 const roboto = Roboto({
   subsets: ["latin"],
   weight: ["400", "700"],
 });
-
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -33,7 +34,18 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${roboto.className} antialiased`}
       >
+        <SessionProvider>
           {children}
+        </SessionProvider>
+        <Toaster
+            richColors
+            position="top-center"
+            toastOptions={{
+              classNames: {
+                title: '!font-semibold',
+              },
+            }}
+          />
       </body>
     </html>
   );

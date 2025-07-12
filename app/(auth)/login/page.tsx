@@ -30,6 +30,8 @@ import {
   Eye,
   EyeOff, Building
 } from "lucide-react";
+import { useRouter } from "next/navigation";
+import { toast } from "sonner"
 
 // Login validation schema
 const loginSchema = z.object({
@@ -42,7 +44,8 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
-
+  const [isLoading, setIsLoading] = useState(false);
+  const router = useRouter();
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -53,7 +56,24 @@ export default function LoginPage() {
   });
 
   const onSubmit = async (data: LoginFormData) => {
-    console.log('LOGIN:', data);
+    setIsLoading(true);
+    try {
+      const result = await fetch("/api/login", {
+        method: "POST",
+        body: JSON.stringify(data),
+      });
+      const resultData = await result.json();
+      if(resultData.error) {
+        toast.error(resultData.error);
+      } else {
+        router.push("/");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      toast.error("An unexpected error occurred. Please try again.");
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   return (
@@ -93,7 +113,7 @@ export default function LoginPage() {
                       <FormLabel className="flex items-center gap-2">
                         <Mail className="h-4 w-4" />
                         Email Address
-                      </FormLabel>p
+                      </FormLabel>
                       <FormControl>
                         <Input
                           type="email"
@@ -142,8 +162,8 @@ export default function LoginPage() {
                   )}
                 />
 
-                <Button type="submit" className="w-full">
-                  Sign in
+                <Button type="submit" className="w-full" disabled={isLoading}>
+                  {isLoading ? "Signing in..." : "Sign in"}
                 </Button>
               </form>
             </Form>
