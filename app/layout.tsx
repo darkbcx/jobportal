@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
-import { UserProvider } from "@/lib/contexts/UserContext";
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -34,9 +33,7 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${roboto.className} antialiased`}
       >
-        <UserProvider>
           {children}
-        </UserProvider>
       </body>
     </html>
   );

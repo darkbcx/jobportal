@@ -1,7 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
@@ -25,16 +24,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Alert, AlertDescription } from "@/components/ui/alert";
 import {
   Mail,
   Lock,
   Eye,
-  EyeOff, Building,
-  AlertCircle,
-  Loader2
+  EyeOff, Building
 } from "lucide-react";
-import { useUser } from "@/lib/contexts/UserContext";
 
 // Login validation schema
 const loginSchema = z.object({
@@ -46,10 +41,7 @@ const loginSchema = z.object({
 type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginPage() {
-  const router = useRouter();
-  const searchParams = useSearchParams();
   const [showPassword, setShowPassword] = useState(false);
-  const { login, state: { isLoading, error, isAuthenticated } } = useUser();
 
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
@@ -60,21 +52,8 @@ export default function LoginPage() {
     },
   });
 
-  // Handle redirect after successful login
-  useEffect(() => {
-    if (isAuthenticated) {
-      const redirectTo = searchParams.get('redirect') || '/';
-      router.replace(redirectTo);
-    }
-  }, [isAuthenticated, router, searchParams]);
-
   const onSubmit = async (data: LoginFormData) => {
-    try {
-      await login(data.email, data.password);
-      // The redirect will be handled by the useEffect above
-    } catch (error) {
-      console.error("Login failed:", error);
-    }
+    console.log('LOGIN:', data);
   };
 
   return (
@@ -114,13 +93,12 @@ export default function LoginPage() {
                       <FormLabel className="flex items-center gap-2">
                         <Mail className="h-4 w-4" />
                         Email Address
-                      </FormLabel>
+                      </FormLabel>p
                       <FormControl>
                         <Input
                           type="email"
                           placeholder="Enter your email"
                           {...field}
-                          disabled={isLoading}
                         />
                       </FormControl>
                       <FormMessage />
@@ -143,7 +121,6 @@ export default function LoginPage() {
                             type={showPassword ? "text" : "password"}
                             placeholder="Enter your password"
                             {...field}
-                            disabled={isLoading}
                           />
                           <Button
                             type="button"
@@ -151,7 +128,6 @@ export default function LoginPage() {
                             size="sm"
                             className="absolute right-0 top-0 h-full px-3 py-2 hover:bg-transparent"
                             onClick={() => setShowPassword(!showPassword)}
-                            disabled={isLoading}
                           >
                             {showPassword ? (
                               <EyeOff className="h-4 w-4" />
@@ -166,22 +142,8 @@ export default function LoginPage() {
                   )}
                 />
 
-                {error && (
-                  <Alert variant="destructive">
-                    <AlertCircle className="h-4 w-4" />
-                    <AlertDescription>{error}</AlertDescription>
-                  </Alert>
-                )}
-
-                <Button type="submit" className="w-full" disabled={isLoading}>
-                  {isLoading ? (
-                    <>
-                      <Loader2 className="h-4 w-4 mr-2 animate-spin" />
-                      Signing in...
-                    </>
-                  ) : (
-                    "Sign in"
-                  )}
+                <Button type="submit" className="w-full">
+                  Sign in
                 </Button>
               </form>
             </Form>

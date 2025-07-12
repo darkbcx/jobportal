@@ -74,7 +74,6 @@ export default function JobApplyForm({
     cancelSubmitApplication();
   };
 
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const formatSalary = (jobPosting: JobPosting) => {
     if (!jobPosting.salary_min || !jobPosting.salary_max) {
       return "Salary not specified";
