@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
@@ -22,10 +22,11 @@ import {
   Globe,
   CheckCircle,
   Star,
+  Loader2,
 } from "lucide-react";
 import JobApplyForm from "./forms/job-apply-form";
-import { getJobPosting } from "@/actions/jobposting";
 import { JobPosting } from "@/lib/types";
+import { useJobPosting } from "@/lib/hooks/use-queries";
 
 // interface ApplicationForm {
 //   fullName: string;
@@ -45,24 +46,8 @@ export default function JobDetails({ jobId }: JobDetailsProps) {
   const [isSaved, setIsSaved] = useState(false);
   const [hasApplied, setHasApplied] = useState(false);
   const [showApplicationForm, setShowApplicationForm] = useState(false);
-  const [jobPosting, setJobPosting] = useState<JobPosting | null>(null);
-  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    const fetchJobPosting = async () => {
-      try {
-        const job = await getJobPosting(jobId);
-        setJobPosting(job);
-      } catch (error) {
-        console.error("Error fetching job posting:", error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    if (jobId) {
-      fetchJobPosting();
-    }
-  }, [jobId]);
+  const { data: jobPosting, isLoading } = useJobPosting(jobId);
 
   const formatSalary = (jobPosting: JobPosting) => {
     if (!jobPosting.salary_min || !jobPosting.salary_max) {
@@ -95,17 +80,17 @@ export default function JobDetails({ jobId }: JobDetailsProps) {
     setShowApplicationForm(true);
   };
 
-  if (loading) {
+  if (isLoading) {
     return (
-      <div className="flex items-center justify-center p-8">
-        <div className="text-muted-foreground">Loading job details...</div>
+      <div className="flex h-full items-center justify-center p-8">
+        <Loader2 className="w-10 h-10 animate-spin" />
       </div>
     );
   }
 
   if (!jobPosting) {
     return (
-      <div className="flex items-center justify-center p-8">
+      <div className="flex h-full items-center justify-center p-8">
         <div className="text-muted-foreground">Job not found</div>
       </div>
     );

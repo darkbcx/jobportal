@@ -1,5 +1,5 @@
 "use client";
-import { Sheet, SheetContent, SheetHeader, SheetTitle } from "../ui/sheet";
+import { Sheet, SheetContent, SheetHeader, SheetTitle, SheetDescription } from "../ui/sheet";
 import JobDetails from "../job-detail";
 
 type JobDetailSheetProps = {
@@ -20,6 +20,9 @@ export default function JobDetailSheet({
           <SheetTitle>
             Job Details
           </SheetTitle>
+          <SheetDescription>
+            View detailed information about the selected job posting.
+          </SheetDescription>
         </SheetHeader>
         <div className="w-full h-full overflow-y-auto px-4 pb-4">
           {jobId ? (
