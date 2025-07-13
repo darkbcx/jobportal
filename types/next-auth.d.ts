@@ -6,6 +6,10 @@ declare module "next-auth" {
       id: string;
       user_type: UserType;
       email: string;
+      created_at: Date;
+      updated_at: Date;
+      is_active: boolean;
+      last_login: Date;
     };
   }
 
@@ -13,6 +17,10 @@ declare module "next-auth" {
     id: string;
     user_type: UserType;
     email: string;
+    created_at: Date;
+    updated_at: Date;
+    is_active: boolean;
+    last_login: Date;
   }
 }
 
@@ -20,5 +28,9 @@ declare module "next-auth/jwt" {
   interface JWT {
     id: string;
     user_type: UserType;
+    created_at: Date;
+    updated_at: Date;
+    is_active: boolean;
+    last_login: Date;
   }
 } 

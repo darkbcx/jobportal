@@ -3,14 +3,15 @@ import { Button } from "@/components/ui/button";
 import { Building, ChevronDownIcon } from "lucide-react";
 import Link from "next/link";
 import { Briefcase, UserIcon, Settings, LogOut } from "lucide-react";
-import { User } from "@/lib/types";
+import { Employer, JobSeeker, User } from "@/lib/types";
 
 interface UserMenuProps {
   user: User;
+  profile: JobSeeker | Employer | null;
   onLogout: () => void;
 }
 
-export default function UserMenu({ user, onLogout }: UserMenuProps) {
+export default function UserMenu({ user, profile, onLogout }: UserMenuProps) {
   const getUserIcon = () => {
     if (!user) return <UserIcon className="h-4 w-4" />;
 
@@ -29,17 +30,13 @@ export default function UserMenu({ user, onLogout }: UserMenuProps) {
   const getUserDisplayName = (user: User | null): string => {
     if (!user) return "Unknown User";
 
-    // if (user.user_type === "JOB_SEEKER" && isJobSeekerProfile(profile)) {
-    //   return `${profile?.first_name} ${profile?.last_name}`;
-    // } else if (user.user_type === "EMPLOYER" && isEmployerProfile(profile)) {
-    //   return profile?.company_name;
-    // } else if (user.user_type === "ADMIN" && isAdminProfile(profile)) {
-    //   return profile?.admin_level;
-    // } else {
-    //   return user.email;
-    // }
+    if (user.user_type === "JOB_SEEKER") {
+      return `${(profile as JobSeeker)?.first_name} ${(profile as JobSeeker)?.last_name}`;
+    } else if (user.user_type === "EMPLOYER") {
+      return (profile as Employer)?.company_name;
+    }
 
-    return user.email;
+    return user.email; // Admin
   };
 
 

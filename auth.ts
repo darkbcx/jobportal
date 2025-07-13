@@ -14,20 +14,24 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       },
       authorize: async (credentials) => {
         if(!credentials) {
-          throw new Error("No credentials provided");
+          return null;
         }
 
         const user = await getUserByEmail(credentials.email as string);
         if(!user) {
-          throw new Error("User not found");
+          return null;
         }
 
         const hashedPassword = crypto.createHash("md5").update(credentials.password as string).digest("hex");
         if (user.password_hash !== hashedPassword) {
-          throw new Error("Invalid password");
+          return null;
         }
 
-        return user;
+        // Convert to NextAuth User format, ensuring last_login is always a Date
+        return {
+          ...user,
+          last_login: user.last_login || new Date()
+        };
       },
     }),
   ],
@@ -46,6 +50,10 @@ export const { handlers, signIn, signOut, auth } = NextAuth({
       if (user) {
         token.id = _user.id;
         token.user_type = _user.user_type;
+        token.created_at = _user.created_at;
+        token.updated_at = _user.updated_at;
+        token.is_active = _user.is_active;
+        token.last_login = _user.last_login;
       }
       return token;
     }

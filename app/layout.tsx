@@ -4,6 +4,7 @@ import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner"
 import QueryProvider from "@/components/providers/query-provider"
+import { UserProvider } from "@/components/providers/user-provider"
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -37,7 +38,9 @@ export default function RootLayout({
       >
         <QueryProvider>
           <SessionProvider>
-            {children}
+            <UserProvider>
+              {children}
+            </UserProvider>
           </SessionProvider>
         </QueryProvider>
         <Toaster

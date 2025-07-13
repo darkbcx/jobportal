@@ -10,33 +10,13 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from "./ui/dropdown-menu";
-import { signOut, useSession } from "next-auth/react";
-import { useEffect, useState } from "react";
+import { signOut } from "next-auth/react";
 import UserMenu from "./dropdown-menu/user-menu";
-import { User } from "@/lib/types";
+import { Employer, JobSeeker, User } from "@/lib/types";
+import { useUser } from "./providers/user-provider";
 
 export default function WebHeader() {
-  const { data: session, status: authStatus } = useSession();
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
-  const [isLoading, setIsLoading] = useState(true);
-  const user = session?.user;
-
-  useEffect(() => {
-    switch (authStatus) {
-      case "authenticated":
-        setIsAuthenticated(true);
-        setIsLoading(false);
-        break;
-      case "unauthenticated":
-        setIsAuthenticated(false);
-        setIsLoading(false);
-        break;
-      case "loading":
-        setIsAuthenticated(false);
-        setIsLoading(true);
-        break;
-    }
-  }, [authStatus,session]);
+  const { user, profile, isLoading } = useUser();
 
   return (
     <div className="w-full border-b bg-white">
@@ -58,8 +38,8 @@ export default function WebHeader() {
             <Loader2 className="h-4 w-4 animate-spin" />
           ) : (
             <>
-              {isAuthenticated ? (
-                <UserMenu user={user as User} onLogout={() => signOut()} />
+              {user ? (
+                <UserMenu user={user as User} profile={profile as JobSeeker | Employer | null} onLogout={() => signOut()} />
               ) : (
                 <>
                   {/* Auth Buttons */}
