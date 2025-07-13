@@ -584,3 +584,10 @@ export interface listParams {
   offset?: number;
   limit?: number;
 }
+
+export interface applicationFilter {
+  status?: ApplicationStatus;
+  job_posting_id?: string;
+  job_seeker_id?: string;
+  employer_id?: string;
+}
