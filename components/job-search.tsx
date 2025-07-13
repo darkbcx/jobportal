@@ -30,7 +30,7 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
   useEffect(() => {
     const fetchJobs = async () => {
       const jobs = await listJobPostings({});
-      setJobs((value) => [...value, ...jobs]);
+      setJobs(jobs);
     };
     fetchJobs();
   }, []);

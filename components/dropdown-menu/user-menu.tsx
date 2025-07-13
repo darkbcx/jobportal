@@ -1,7 +1,7 @@
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
 import { Button } from "@/components/ui/button";
 import { Building, ChevronDownIcon } from "lucide-react";
-import { Link } from "lucide-react";
+import Link from "next/link";
 import { Briefcase, UserIcon, Settings, LogOut } from "lucide-react";
 import { User } from "@/lib/types";
 

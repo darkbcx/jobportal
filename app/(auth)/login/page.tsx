@@ -32,6 +32,7 @@ import {
 } from "lucide-react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner"
+import { useSession } from "next-auth/react";
 
 // Login validation schema
 const loginSchema = z.object({
@@ -46,6 +47,7 @@ export default function LoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const router = useRouter();
+  const { update: updateSession } = useSession();
   const form = useForm<LoginFormData>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -66,7 +68,9 @@ export default function LoginPage() {
       if(resultData.error) {
         toast.error(resultData.error);
       } else {
-        router.push("/");
+        // Invalidate authentication status by updating the session
+        await updateSession();
+        router.replace("/");
       }
     } catch (error) {
       console.error("Login error:", error);
