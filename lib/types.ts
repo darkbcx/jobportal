@@ -152,7 +152,7 @@ export interface Application extends BaseEntity {
   job_seeker_id: string;
   job_posting_id: string;
   cover_letter?: string;
-  resume_id: string;
+  // resume_id: string;
   salary_expectation?: number;
   status: ApplicationStatus;
   applied_at: Date;
