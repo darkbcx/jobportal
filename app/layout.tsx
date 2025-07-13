@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Roboto } from "next/font/google";
 import "./globals.css";
 import { Toaster } from "@/components/ui/sonner"
+import QueryProvider from "@/components/providers/query-provider"
 
 const roboto = Roboto({
   subsets: ["latin"],
@@ -34,9 +35,11 @@ export default function RootLayout({
         suppressHydrationWarning
         className={`${roboto.className} antialiased`}
       >
-        <SessionProvider>
-          {children}
-        </SessionProvider>
+        <QueryProvider>
+          <SessionProvider>
+            {children}
+          </SessionProvider>
+        </QueryProvider>
         <Toaster
             richColors
             position="top-center"

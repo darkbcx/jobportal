@@ -12,10 +12,9 @@ import {
 } from "@/components/ui/select";
 import { Switch } from "@/components/ui/switch";
 import { Separator } from "@/components/ui/separator";
-import { useEffect, useState } from "react";
-import { JobPosting } from "@/lib/types";
-import { listJobPostings } from "@/actions/jobposting";
+import { useState } from "react";
 import JobListItem from "./job-list-item";
+import { useJobPostings } from "@/lib/hooks/use-queries";
 
 type JobSearchProps = {
   viewDetails: (id: string) => void;
@@ -23,17 +22,12 @@ type JobSearchProps = {
 
 export default function JobSearch({ viewDetails }: JobSearchProps) {
   const [remoteOnly, setRemoteOnly] = useState(true);
-  const [jobs, setJobs] = useState<JobPosting[]>([]);
-
-  // TODO : use tanstack query to fetch jobs with useInfiniteQuery
-
-  useEffect(() => {
-    const fetchJobs = async () => {
-      const jobs = await listJobPostings({});
-      setJobs(jobs);
-    };
-    fetchJobs();
-  }, []);
+  
+  // Use TanStack Query to fetch jobs
+  const { data: jobs = [], isLoading, error } = useJobPostings({
+    remoteOnly,
+    limit: 10
+  });
 
   return (
     <div className="min-h-screen">
@@ -240,9 +234,23 @@ export default function JobSearch({ viewDetails }: JobSearchProps) {
 
         {/* Job Listings */}
         <div className="space-y-4">
-          {jobs.map((job) => (
-            <JobListItem key={job.id} job={job} viewDetails={viewDetails} />
-          ))}
+          {isLoading ? (
+            <div className="text-center py-8">
+              <div className="text-muted-foreground">Loading jobs...</div>
+            </div>
+          ) : error ? (
+            <div className="text-center py-8">
+              <div className="text-destructive">Error loading jobs. Please try again.</div>
+            </div>
+          ) : jobs.length === 0 ? (
+            <div className="text-center py-8">
+              <div className="text-muted-foreground">No jobs found matching your criteria.</div>
+            </div>
+          ) : (
+            jobs.map((job) => (
+              <JobListItem key={job.id} job={job} viewDetails={viewDetails} />
+            ))
+          )}
         </div>
       </div>
     </div>
